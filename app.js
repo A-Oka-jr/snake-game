@@ -91,12 +91,14 @@ function update() {
   ) {
     gameOver = true;
     alert("Game Over");
+    resetGame();
   }
 
   for (let i = 0; i < snakeBody.length; i++) {
     if (snakeX == snakeBody[i][0] && snakeY == snakeBody[i][1]) {
       gameOver = true;
       alert("Game Over");
+      resetGame();
     }
   }
 }
@@ -104,4 +106,14 @@ function update() {
 const placeFood = () => {
   foodX = Math.floor(Math.random() * cols) * blockSize;
   foodY = Math.floor(Math.random() * rows) * blockSize;
+};
+
+const resetGame = () => {
+  snakeX = blockSize * 5;
+  snakeY = blockSize * 5;
+  velocityX = 0;
+  velocityY = 0;
+  snakeBody = [];
+  placeFood();
+  gameOver = false;
 };
